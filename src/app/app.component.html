@@ -1,8 +1,60 @@
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      Bootstrap
+      CaesarCoder
     </a>
   </div>
 </nav>
+<div class="my-4">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-6">
+        <form [formGroup]="formCifrado" (submit)="cifrar()">
+          <div class="mb-3">
+            <label for="codigo" class="form-label">Ingrese el texto a codificar</label>
+            <textarea formControlName="codigo" style="height: 30vh; min-height: 200px;" placeholder="..." class="form-control" id="codigo" aria-describedby="codigo">
+            </textarea>
+          </div>
+          <div class="mb-3">
+            <label for="cifrado" class="form-label">Ingrese el tipo de cifrado que quiere realizar</label>
+            <input formControlName="cifrado" type="number" placeholder="0" class="form-control" id="cifrado" aria-describedby="cifrado">
+            <div id="emailHelp" class="form-text">Ingrese solamente el numero del cifrado que desea</div>
+          </div>
+          <button [disabled]="formCifrado.invalid" type="submit" class="btn  btn-outline-dark">Cifrar</button>
+        </form>
+        <div class="mb-3 mt-3">
+          <label for="cifrado" class="form-label">Resultado</label>
+          <textarea disabled style="height: 30vh; min-height: 200px;" placeholder="..." class="form-control" id="cifrado" aria-describedby="cifrado">{{texto}}</textarea>
+        </div>
+      </div>
+      <div class="col-6">
+        <form [formGroup]="formDescifrado">
+          <div class="mb-3">
+            <label for="codificado" class="form-label">Ingrese el texto a descodificar</label>
+            <textarea formControlName="codificado" style="height: 30vh; min-height: 200px;" placeholder="..." class="form-control" id="codificado" aria-describedby="codificado">
+            </textarea>
+          </div>
+          <button [disabled]="formDescifrado.invalid" type="submit" class="btn btn-outline-dark" (click)="descifrar()">Descifrar</button>
+        </form>
+        <div class="mb-3 mt-3" >
+          <div class="table-responsive">
+            <table *ngIf="descifrado !== ''" class="table table-dark">
+              <thead>
+                <tr>
+                  <th>Modulo</th>
+                  <th>Descifrado</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let i of cifradores">
+                <tr>
+                  <td>ROT{{i.cifrado.toString()}}</td>
+                  <td>{{i.cadena}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
