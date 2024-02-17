@@ -1,4 +1,5 @@
 export class CaesarModule {
+    //1)
     modulo:number = 1;
     cadenaOriginal:string = "";
     cadenaTransformada: string = "";
@@ -30,17 +31,17 @@ export class CaesarModule {
         'y',
         'z'
     ]
-    // 1)
+    // 2)
     transformar(cadena:string, modulo:number):string{
         this.cadenaOriginal = cadena.toLowerCase();
         this.modulo = modulo;
         this.cadenaTransformada = "";
         var saltos = 0;
-        //2)
+        //3)
         for (let i = 0; i < this.cadenaOriginal.length; i++) {
             const caracter = this.cadenaOriginal[i];
             if(caracter != ' '){
-                //3)
+                //4)        
                 var posicionCaracter = this.mapaCaracteres.findIndex(caracterMapa => caracterMapa === caracter);
                 if(posicionCaracter + modulo >= this.mapaCaracteres.length){
                     var espacios = this.mapaCaracteres.length - posicionCaracter;
@@ -56,7 +57,7 @@ export class CaesarModule {
         }
         return this.cadenaTransformada;
     }
-    //4)
+    //5)
     decifrar(cadena:string, modulo:number):string{
         this.cadenaOriginal = cadena.toLowerCase();
         this.modulo = modulo;

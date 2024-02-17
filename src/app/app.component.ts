@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 export class AppComponent {
   title = 'CeasearCoder';
+  //6)
   caesar = new CaesarModule();
   numCifrado!:number
   cadena:string =""
@@ -28,6 +29,7 @@ export class AppComponent {
   cifradores:{cadena:string, cifrado:number }[] = []
   descifrado:string = ""
 
+  //7)
   formCifrado = new FormGroup({
     'codigo': new FormControl('', [Validators.required]),
     'cifrado': new FormControl<number|null>(null, [Validators.required, Validators.pattern('^[0-9]{1,2}$'), Validators.max(this.caesar.mapaCaracteres.length), Validators.min(1)])
@@ -35,11 +37,13 @@ export class AppComponent {
   formDescifrado = new FormGroup({
     'codificado': new FormControl('', [Validators.required]),
   })
+  //8)
   cifrar(){
     this.cadena = this.formCifrado.controls.codigo.value!;
     this.numCifrado = this.formCifrado.controls.cifrado.value!;
     this.texto = this.caesar.transformar(this.cadena,this.numCifrado);
   }
+  //9)
   descifrar(){
     this.descifrado = this.formDescifrado.controls.codificado.value!;
     this.cifradores = [];
