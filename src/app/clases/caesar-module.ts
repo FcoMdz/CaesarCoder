@@ -37,7 +37,9 @@ export class CaesarModule {
       this.mapaCaracteres = [];
       for (let i = 0; i < nuevo.length; i++) {
         const element = nuevo[i];
-        if(!this.mapaCaracteres.includes(element)) this.mapaCaracteres.push(element)
+        if(!this.mapaCaracteres.includes(element)){
+          this.mapaCaracteres.push(element);
+        }
       }
     }
     // 2)
@@ -87,7 +89,11 @@ export class CaesarModule {
                 this.cadenaTransformada += this.mapaCaracteres[saltos];
             }
             else if(caracter == ' ') {
-                this.cadenaTransformada += ' ';
+              this.cadenaTransformada += ' ';
+            }else if(caracter == "|" && this.cadenaOriginal[i+1] == "?" && this.cadenaOriginal[i+2] == "|"){
+              console.log("desconocido")
+              this.cadenaTransformada += '|?|';
+              i+=2;
             }else{
               this.cadenaTransformada += '|?|';
             }
