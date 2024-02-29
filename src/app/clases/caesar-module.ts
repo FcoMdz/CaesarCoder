@@ -33,10 +33,11 @@ export class CaesarModule {
     ]
     modificarCadenaCaracteres(nuevo: string){
       nuevo = nuevo.toLowerCase();
+      if(nuevo == ' ') return;
       this.mapaCaracteres = [];
       for (let i = 0; i < nuevo.length; i++) {
         const element = nuevo[i];
-        this.mapaCaracteres.push(element)
+        if(!this.mapaCaracteres.includes(element)) this.mapaCaracteres.push(element)
       }
     }
     // 2)
