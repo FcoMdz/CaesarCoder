@@ -64,7 +64,7 @@ export class CaesarModule {
             }else if(caracter == ' '){
                 this.cadenaTransformada += ' ';
             }else{
-              this.cadenaTransformada += '|?|';
+              this.cadenaTransformada += '�';
             }
 
         }
@@ -90,12 +90,8 @@ export class CaesarModule {
             }
             else if(caracter == ' ') {
               this.cadenaTransformada += ' ';
-            }else if(caracter == "|" && this.cadenaOriginal[i+1] == "?" && this.cadenaOriginal[i+2] == "|"){
-              console.log("desconocido")
-              this.cadenaTransformada += '|?|';
-              i+=2;
             }else{
-              this.cadenaTransformada += '|?|';
+              this.cadenaTransformada += '�';
             }
         }
         return this.cadenaTransformada;
