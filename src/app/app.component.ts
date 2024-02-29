@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterOutlet,
     ReactiveFormsModule,
     FormsModule,
-    
+
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -37,14 +37,23 @@ export class AppComponent {
   formDescifrado = new FormGroup({
     'codificado': new FormControl('', [Validators.required]),
   })
+  formCadena = new FormGroup({
+    'cadena': new FormControl('')
+  })
   //8)
   cifrar(){
+    if(this.formCadena.controls.cadena.value){
+      this.caesar.modificarCadenaCaracteres(this.formCadena.controls.cadena.value)
+    }
     this.cadena = this.formCifrado.controls.codigo.value!;
     this.numCifrado = this.formCifrado.controls.cifrado.value!;
     this.texto = this.caesar.transformar(this.cadena,this.numCifrado);
   }
   //9)
   descifrar(){
+    if(this.formCadena.controls.cadena.value){
+      this.caesar.modificarCadenaCaracteres(this.formCadena.controls.cadena.value)
+    }
     this.descifrado = this.formDescifrado.controls.codificado.value!;
     this.cifradores = [];
     for(let i=1; i < this.caesar.mapaCaracteres.length;i++){

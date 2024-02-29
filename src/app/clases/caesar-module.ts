@@ -31,6 +31,14 @@ export class CaesarModule {
         'y',
         'z'
     ]
+    modificarCadenaCaracteres(nuevo: string){
+      nuevo = nuevo.toLowerCase();
+      this.mapaCaracteres = [];
+      for (let i = 0; i < nuevo.length; i++) {
+        const element = nuevo[i];
+        this.mapaCaracteres.push(element)
+      }
+    }
     // 2)
     transformar(cadena:string, modulo:number):string{
         this.cadenaOriginal = cadena.toLowerCase();
@@ -40,8 +48,8 @@ export class CaesarModule {
         //3)
         for (let i = 0; i < this.cadenaOriginal.length; i++) {
             const caracter = this.cadenaOriginal[i];
-            if(caracter != ' '){
-                //4)        
+            if(this.mapaCaracteres.includes(caracter)){
+                //4)
                 var posicionCaracter = this.mapaCaracteres.findIndex(caracterMapa => caracterMapa === caracter);
                 if(posicionCaracter + modulo >= this.mapaCaracteres.length){
                     var espacios = this.mapaCaracteres.length - posicionCaracter;
@@ -50,10 +58,12 @@ export class CaesarModule {
                     saltos = posicionCaracter + this.modulo;
                 }
                 this.cadenaTransformada += this.mapaCaracteres[saltos];
-            }else{
+            }else if(caracter == ' '){
                 this.cadenaTransformada += ' ';
+            }else{
+              this.cadenaTransformada += '|?|';
             }
-            
+
         }
         return this.cadenaTransformada;
     }
@@ -65,7 +75,7 @@ export class CaesarModule {
         var saltos = 0;
         for (let i = 0; i < this.cadenaOriginal.length; i++) {
             const caracter = this.cadenaOriginal[i];
-            if(caracter != ' '){
+            if(this.mapaCaracteres.includes(caracter)){
                 var posicionCaracter = this.mapaCaracteres.findIndex(caracterMapa => caracterMapa === caracter);
                 if(posicionCaracter - modulo < 0){
                     var espacios = this.modulo - posicionCaracter;
@@ -75,8 +85,10 @@ export class CaesarModule {
                 }
                 this.cadenaTransformada += this.mapaCaracteres[saltos];
             }
-            else {
+            else if(caracter == ' ') {
                 this.cadenaTransformada += ' ';
+            }else{
+              this.cadenaTransformada += '|?|';
             }
         }
         return this.cadenaTransformada;

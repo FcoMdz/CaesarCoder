@@ -1,4 +1,4 @@
-<!--10)-->  
+<!--10)-->
 <nav class="navbar bg-dark border-bottom border-body  navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">CaesarCoder</a>
@@ -23,6 +23,19 @@
     </div>
   </div>
 </nav>
+<div class="my-4">
+  <div class="container text-center">
+    <div class="row">
+      <form [formGroup]="formCadena" (submit)="cifrar()">
+        <div class="mb-3">
+          <label for="cadena" class="form-label">Ingrese la cadena de caracteres a utilizar</label>
+          <input formControlName="cadena" type="text" placeholder="abcdefghijklmnñopqrstuvxyz" class="form-control" id="cadena" aria-describedby="cadena">
+          <small>Si no ingresa ninguna, se utilizarán los caracteres predeterminados</small>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="my-4">
   <div class="container text-center">
     <div class="row">
@@ -72,7 +85,7 @@
                 </tr>
               </tbody>
             </table>
-          </div> 
+          </div>
         </div>
       </div>
     </div>
