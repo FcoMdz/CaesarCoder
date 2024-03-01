@@ -32,7 +32,7 @@ export class CaesarModule {
         'z'
     ]
     modificarCadenaCaracteres(nuevo: string){
-      nuevo = nuevo.toLowerCase();
+      nuevo = nuevo;
       if(nuevo == ' ') return;
       this.mapaCaracteres = [];
       for (let i = 0; i < nuevo.length; i++) {
@@ -42,9 +42,20 @@ export class CaesarModule {
         }
       }
     }
+    modificarCadenaCaracteresMantenerRepetidos(nuevo: string){
+      nuevo = nuevo;
+      if(nuevo == ' ') return;
+      this.mapaCaracteres = [];
+      for (let i = 0; i < nuevo.length; i++) {
+        const element = nuevo[i];
+        //if(!this.mapaCaracteres.includes(element)){
+          this.mapaCaracteres.push(element);
+        //}
+      }
+    }
     // 2)
     transformar(cadena:string, modulo:number):string{
-        this.cadenaOriginal = cadena.toLowerCase();
+        this.cadenaOriginal = cadena;
         this.modulo = modulo;
         this.cadenaTransformada = "";
         var saltos = 0;
@@ -72,7 +83,7 @@ export class CaesarModule {
     }
     //5)
     decifrar(cadena:string, modulo:number):string{
-        this.cadenaOriginal = cadena.toLowerCase();
+        this.cadenaOriginal = cadena;
         this.modulo = modulo;
         this.cadenaTransformada = "";
         var saltos = 0;

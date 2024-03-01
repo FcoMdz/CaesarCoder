@@ -24,14 +24,21 @@
   </div>
 </nav>
 <div class="my-4">
-  <div class="container text-center">
+  <div class="container ">
     <div class="row">
-      <form [formGroup]="formCadena" (submit)="cifrar()">
-        <div class="mb-3">
-          <label for="cadena" class="form-label">Ingrese la cadena de caracteres a utilizar</label>
-          <input formControlName="cadena" type="text" placeholder="abcdefghijklmnñopqrstuvxyz" class="form-control" id="cadena" aria-describedby="cadena">
+      <form [formGroup]="formCadena">
+        <div class="mb-3 text-center">
+          <label for="cadena" class="form-label ">Ingrese la cadena de caracteres a utilizar</label>
+          <input formControlName="cadena" type="text" placeholder="abcdefghijklmnñopqrstuvxyz" (change)="updateCadena()" class="form-control" id="cadena" aria-describedby="cadena">
+          <div class="form-check text-start">
+            <input class="form-check-input" (change)="updateCadena()" formControlName="rrepetidas" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Eliminar caracteres repetidos a utilizar
+            </label>
+          </div>
           <small>Si no ingresa ninguna, se utilizarán los caracteres predeterminados</small>
         </div>
+
       </form>
     </div>
   </div>
@@ -50,7 +57,7 @@
           <div class="mb-3">
             <label for="cifrado" class="form-label">Ingrese el tipo de cifrado que quiere realizar</label>
             <input formControlName="cifrado" type="number" placeholder="0" class="form-control" id="cifrado" aria-describedby="cifrado">
-            <div id="emailHelp" class="form-text">Ingrese solamente el numero del cifrado que desea</div>
+            <div id="emailHelp" class="form-text">Valor máximo: {{caesar.mapaCaracteres.length}}</div>
           </div>
           <button [disabled]="formCifrado.invalid" type="submit" class="btn  btn-outline-dark">Cifrar</button>
         </form>
@@ -66,6 +73,12 @@
             <label for="codificado" class="form-label">Ingrese el texto a decodificar</label>
             <textarea formControlName="codificado" style="height: 30vh; min-height: 200px;" placeholder="..." class="form-control" id="codificado" aria-describedby="codificado">
             </textarea>
+          </div>
+          <div class="mb-3">
+            <label for="cifrado1" class="form-label">Ingrese el ROT a decifrar</label>
+            <input formControlName="cifrado" type="number" placeholder="0" class="form-control" id="cifrado1" aria-describedby="cifrado">
+            <div id="emailHelp" class="form-text">Valor máximo: {{caesar.mapaCaracteres.length}}</div>
+            <small>Si deja este campo vacio, se decifrará en todos los ROT posibles</small>
           </div>
           <button [disabled]="formDescifrado.invalid" type="submit" class="btn btn-outline-dark" (click)="descifrar()">Descifrar</button>
         </form>
