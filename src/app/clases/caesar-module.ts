@@ -73,7 +73,9 @@ export class CaesarModule {
                 }
                 this.cadenaTransformada += this.mapaCaracteres[saltos];
             }else if(caracter == ' '){
-                this.cadenaTransformada += ' ';
+              this.cadenaTransformada += ' ';
+            }else if(caracter == '\n'){
+              this.cadenaTransformada += '\n';
             }else{
               this.cadenaTransformada += '�';
             }
@@ -101,6 +103,8 @@ export class CaesarModule {
             }
             else if(caracter == ' ') {
               this.cadenaTransformada += ' ';
+            }else if(caracter == '\n'){
+              this.cadenaTransformada += '\n';
             }else{
               this.cadenaTransformada += '�';
             }
